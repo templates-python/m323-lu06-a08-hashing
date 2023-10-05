@@ -1,5 +1,6 @@
 import sqlite3
 from user import User
+import bcrypt
 
 
 class UserDao:
@@ -14,8 +15,9 @@ class UserDao:
         self.conn.commit()
 
     def add_user(self, user):
+        hashed_pw = bcrypt.hashpw(user.password.encode('utf-8'), bcrypt.gensalt())
         self.cursor.execute("INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
-                            (user.username, user.email, user.password))
+                            (user.username, user.email, hashed_pw))
         self.conn.commit()
 
     def get_user_by_id(self, user_id):
