@@ -9,3 +9,4 @@ tomli==2.0.1
 flask==3.0.0
 flask-login==0.6.3
 bcrypt==4.0.1
+pylint==3.2.6
