@@ -10,9 +10,11 @@ app.secret_key = 'supersecretkey'
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+
 @login_manager.user_loader
 def load_user(user_id):
     from userDao import UserDao
+
     user_dao = UserDao('todo_example.db')
     return user_dao.get_user_by_id(int(user_id))
 
@@ -38,10 +40,10 @@ def generate_testdata():
 
     # Generate todo items
     todo_dao.create_table()
-    todo_dao.add_item(TodoItem(1,1, 'Buy milk', False))
-    todo_dao.add_item(TodoItem(2,1, 'Buy eggs', False))
-    todo_dao.add_item(TodoItem(3,2, 'Buy bread', False))
-    todo_dao.add_item(TodoItem(4,2, 'Buy butter', False))
+    todo_dao.add_item(TodoItem(1, 1, 'Buy milk', False))
+    todo_dao.add_item(TodoItem(2, 1, 'Buy eggs', False))
+    todo_dao.add_item(TodoItem(3, 2, 'Buy bread', False))
+    todo_dao.add_item(TodoItem(4, 2, 'Buy butter', False))
 
     todo_dao.close()
     user_dao.close()
