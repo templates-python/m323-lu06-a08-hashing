@@ -6,8 +6,12 @@ Aufgabenstellung: https://wiki.bzz.ch/modul/m323/learningunits/lu06/aufgaben/has
 from flask import Flask
 from flask_login import LoginManager
 
-from todoBlueprint import todo_blueprint
-from userBlueprint import user_blueprint
+from todo_blueprint import todo_blueprint
+from user_blueprint import user_blueprint
+from user_dao import UserDao
+from todo_item import TodoItem
+from user import User
+from todo_dao import TodoDao
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
@@ -18,8 +22,6 @@ login_manager.init_app(app)
 
 @login_manager.user_loader
 def load_user(user_id):
-    from userDao import UserDao
-
     user_dao = UserDao('todo_example.db')
     return user_dao.get_user_by_id(int(user_id))
 
@@ -29,12 +31,6 @@ app.register_blueprint(user_blueprint)
 
 
 def generate_testdata():
-
-    from todoItem import TodoItem
-    from user import User
-    from todoDao import TodoDao
-    from userDao import UserDao
-
     todo_dao = TodoDao('todo_example.db')
     user_dao = UserDao('todo_example.db')
 
