@@ -1,3 +1,8 @@
+"""Passwort-Hashing in der Todo-Liste.
+
+Aufgabenstellung: https://wiki.bzz.ch/modul/m323/learningunits/lu06/aufgaben/hash
+"""
+
 from flask import Flask
 from flask_login import LoginManager
 
