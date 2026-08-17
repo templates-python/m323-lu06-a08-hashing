@@ -1,3 +1,5 @@
+"""Routen für die ToDo-Einträge."""
+
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from todo_dao import TodoDao

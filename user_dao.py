@@ -1,9 +1,12 @@
+"""Datenbankzugriff für die Benutzerkonten."""
+
 import sqlite3
 from user import User
 import bcrypt
 
 
 class UserDao:
+    """Liest und schreibt Benutzerkonten in der SQLite-Datenbank."""
 
     def __init__(self, db_file):
         self.conn = sqlite3.connect(db_file, check_same_thread=False)
