@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from todoDao import TodoDao
-from todoItem import TodoItem
+from todo_dao import TodoDao
+from todo_item import TodoItem
 
 todo_blueprint = Blueprint('todo_blueprint', __name__)
 todo_dao = TodoDao('todo_example.db')

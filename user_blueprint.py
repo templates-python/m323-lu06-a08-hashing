@@ -1,7 +1,7 @@
 import bcrypt
 from flask import Blueprint, request, jsonify
 from flask_login import login_required, login_user, logout_user
-from userDao import UserDao
+from user_dao import UserDao
 
 user_blueprint = Blueprint('user_blueprint', __name__)
 user_dao = UserDao('todo_example.db')
